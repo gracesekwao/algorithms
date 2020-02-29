@@ -7,13 +7,14 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
     function foo (arr, x) {
+      if (!arr) return -1;
+
        for (i=0; i < arr.length; i++) {
            if(arr[i] === x) {
                return i
            }
        }
        return -1;
-
     }
     res.end('hello');
   });
