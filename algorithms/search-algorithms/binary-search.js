@@ -15,10 +15,10 @@ const server = http.createServer((req, res) => {
             if(arr[midIndex] === x) {
                 return midIndex;
             } else if(arr[midIndex] < x) {
-                fooInner(arr, midIndex + start, end, x);
+                fooInner(arr, midIndex + 1, end, x);
 
             } else if(arr[midIndex] > x) {
-                fooInner(arr, start, midIndex - start, x);
+                fooInner(arr, start, midIndex - 1, x);
             }
         
         }
@@ -27,11 +27,8 @@ const server = http.createServer((req, res) => {
     }
 
     function foo(array, x) {
-        return fooInner(array, 0, array.length, x);
+        return fooInner(array, 0, array.length - 1, x);
     }
-
-    const arr = [10, 12, 17, 20, 27, 36, 54]
-    console.log(foo(arr, 17));
     res.end('hello');
   });
   
