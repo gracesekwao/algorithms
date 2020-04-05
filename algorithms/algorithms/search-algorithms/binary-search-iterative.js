@@ -9,10 +9,20 @@ function foo (arr, x) {
     try {
         while(start <= end) {
             let midIndex = Math.floor(start + ((end - start)/2));
-    
-            if(arr[midIndex] === x){
+            if (start === x) {
+                return start;
+            } else if(arr[midIndex] === x){
                 return midIndex;
-            } else if(arr[midIndex] > x) {
+            } else if(midIndex > start) {
+                if(arr[midIndex - 1] === x) {
+                    return midIndex - 1;
+                }
+            } else if(midIndex < end) {
+                if(arr[midIndex + 1] === x) {
+                    return midIndex + 1;
+                }
+            }
+            else if(arr[midIndex] > x) {
                 end = midIndex - 1;
             } else {
                 start = midIndex + 1;
@@ -26,5 +36,5 @@ function foo (arr, x) {
   
 }
 
-console.log(foo([], 3))
+console.log(foo([3,4,5,6,1,2], 3))
 
